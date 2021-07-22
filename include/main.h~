@@ -1,0 +1,86 @@
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <math.h>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <cglm/cglm.h>
+#include "model.h"
+
+#define PI (3.14159265359)
+#define SCR_WIDTH 800.f
+#define SCR_HEIGHT 600.f
+#define NEAR 0.1f
+#define FAR 1000.f
+#define SHADOW_WIDTH 1024.f
+#define SHADOW_HEIGHT 1024.f
+
+
+
+Model mario = {{vaos[i],shaders[i],matrices[i],tmp,tmp2,tmp3,tmp4,materials[i]}};
+/* MODELS */
+Model mario;
+mat4 marioMatrix = GLM_MAT4_IDENTITY_INIT;
+
+/* TEXTURES */
+GLuint crateDiffuse;
+GLuint crateSpecular;
+
+/* SHADERS */
+GLuint modelPhongShader;
+GLuint screenShader;
+GLuint modelShadowShader;
+
+/* FRAMEBUFFERS */
+vec3 viewPos = {0.f,0.f,10.f};
+vec3 viewFront = {0.f,0.f,-1.f};
+vec3 viewUp = {0.f,1.f,0.f};
+float viewRotX = 0.f;
+float viewRotY = 0.f;
+mat4 view = GLM_MAT4_IDENTITY_INIT;
+mat4 viewCascades[3];
+mat4 projection = GLM_MAT4_IDENTITY_INIT;
+
+GLuint linearFBO;
+GLuint linearTexture;
+GLuint linearRBO;
+GLuint postFBO;
+GLuint postTexture;
+
+GLuint shadowFBO;
+GLuint shadowTexture;
+mat4 shadowSpaceMatrix = GLM_MAT4_IDENTITY_INIT;
+
+
+/* VAOS */
+GLuint quadVAO;
+GLuint quadVBO;
+GLuint quadEBO;
+
+GLuint cubeShader;
+GLuint cubeVAO;
+GLuint cubeVBO;
+
+GLuint lightShader;
+GLuint lightVAO;
+vec3 lightPos = {2.f,2.f,2.f};
+vec3 lightDir = {-0.2f,-0.2f,-0.2f};
+mat4 lightMatrix = GLM_MAT4_IDENTITY_INIT;
+
+mat4 floorMatrix = GLM_MAT4_IDENTITY_INIT;
+GLuint floorShader;
+GLuint floorTexture;
+
+
+
+
+
+void context_load();
+void gl_load();
+void gl_init();
+void init();
+void end();
+
+
+
+#endif

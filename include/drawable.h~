@@ -1,0 +1,14 @@
+#ifndef GL_DRAWABLE_H
+#define GL_DRAWABLE_H
+
+
+
+typedef union
+{
+	struct
+	{
+		GLuint vao;
+		GLuint shader;
+		
+	};
+} Drawable;
